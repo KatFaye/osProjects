@@ -57,7 +57,7 @@ int main( int argc, char *argv[] ) {
 		} else {
 			while(n>=p) {
 				int pid = wait(&status);
-				printf("Child with PID %ld exited with status %d.\n", (long)pid, status);
+				//printf("Child with PID %ld exited with status %d.\n", (long)pid, status);
 
 				--n;
 			}
@@ -66,7 +66,7 @@ int main( int argc, char *argv[] ) {
 	}
 	while(n>0) { //wait for remaining processes to finish
 		int pid = wait(&status);
-		printf("Child with PID %ld exited with status %d.\n", (long)pid, status);
+		//printf("Child with PID %ld exited with status %d.\n", (long)pid, status);
 
 		--n;
 	}
