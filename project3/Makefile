@@ -18,3 +18,8 @@ mandelmovie.o: mandelmovie.c
 
 clean:
 	rm -f *.o mandel mandelmovie *.bmp
+
+test: mandelmovie mandel
+	./mandelmovie 5
+	./mandel -x -.09999 -y -.835599 -s .000001 -m 4000 -W 875 -H 875 -n 1 -o test1.bmp
+	./mandel -x -.09999 -y -.835599 -s .000001 -m 4000 -W 875 -H 875 -n 10 -o test2.bmp

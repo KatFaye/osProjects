@@ -58,16 +58,20 @@ int main( int argc, char *argv[] ) {
 			while(n>=p) {
 				int pid = wait(&status);
 				//printf("Child with PID %ld exited with status %d.\n", (long)pid, status);
-
+				if(status) {
+					printf("Warning: Child with PID %ld exited with status %d.\n", (long)pid, status);
+				}
 				--n;
 			}
-			
+
 		}
 	}
 	while(n>0) { //wait for remaining processes to finish
 		int pid = wait(&status);
 		//printf("Child with PID %ld exited with status %d.\n", (long)pid, status);
-
+		if(status) {
+			printf("Warning: Child with PID %ld exited with status %d.\n", (long)pid, status);
+		}
 		--n;
 	}
 
@@ -95,7 +99,7 @@ int buildCmd(char ** mandel, char s[], char fileName[]) {
 	mandel[12] = strdup("875");
 	mandel[13] = strdup("-o");
 	mandel[14] = strdup(fileName);
-	mandel[15] = NULL;	
+	mandel[15] = NULL;
 
 	return 0;
 }
@@ -124,13 +128,13 @@ void usage() {
 	printf("Usage: mandelmovie <number of processes>\n");
 	printf("Default number of processes is 1.\n");
 	exit(1);
-	
+
 }
 int valid(int argc, char* argv[]) {
 	char *ptr;
 	int p;
 
-	if(argc>2) { 
+	if(argc>2) {
 		printf("Err: Too many args!\n");
 		return -1;
 	} else if(argc==1) {
