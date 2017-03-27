@@ -1,6 +1,8 @@
 CC= g++
 CPP=/afs/nd.edu/user14/csesoft/new/bin/g++
-FLAGS= $(eval LIBCURL_LOC = curl-config --libs) -Wall -g -std=c++11
+LD=/afs/nd.edu/user14/csesoft/new/bin/g++`
+LDFLAGS= -lcurl -static-libstdc+
+FLAGS= LDFLAGS -Wall -g -std=c++11
 # NOTE: Above eval gets needed libraries for libcurl
 
 all: config
