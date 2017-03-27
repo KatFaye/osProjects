@@ -1,17 +1,18 @@
-CC=g++
+CC= g++
+CPP=/afs/nd.edu/user14/csesoft/new/bin/g++
 FLAGS= $(eval LIBCURL_LOC = curl-config --libs) -Wall -g -std=c++11
 # NOTE: Above eval gets needed libraries for libcurl
 
 all: config
 
 %.o: %.c %.h
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CPP) $(FLAGS) -c $< -o $@
 
 config: config.o
-	$(CC) $(FLAGS) -o $@ $^
+	$(CPP) $(FLAGS) -o $@ $^
 
 site-tester: site-tester.o
-	$(CC) $(FLAGS) -o $@ $^
+	$(CPP) $(FLAGS) -o $@ $^
 
 clean:
 	rm config *.o
