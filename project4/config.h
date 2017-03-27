@@ -27,7 +27,6 @@ class ConfigProcessor {
       "NUM_PARSE",
       "SEARCH_FILE",
       "SITE_FILE" };
-    string configFile;
     int PERIOD_FETCH;
     int NUM_FETCH;
     int NUM_PARSE;
@@ -79,7 +78,7 @@ int ConfigProcessor::readFile(string f) {
       }
     }
   } else {
-    cout << "Err: File '" << configFile << "' not found!" << endl;
+    cout << "Err: File '" << f << "' not found!" << endl;
     return 1;
   }
   checkDefault();
@@ -88,13 +87,29 @@ int ConfigProcessor::readFile(string f) {
 }
 int ConfigProcessor::setArg(string arg, string val) {
   if(arg=="PERIOD_FETCH") {
-    PERIOD_FETCH = stoi(val);
+    if(stoiWrapper(val)!=-1) {
+      if(stoi(val) < 361 && stoi(val) > 0) { //six minutes max
+        PERIOD_FETCH = stoiWrapper(val);
+      } else {
+        cout << "Warning: " << val << " not in range (1-360). Skipping..." << endl;
+      }
+    }
   } else if(arg=="NUM_FETCH") {
     if(stoiWrapper(val)!=-1) {
-      NUM_FETCH = stoiWrapper(val);
+      if(stoi(val) < 9 && stoi(val) > 0) {
+        NUM_FETCH = stoiWrapper(val);
+      } else {
+        cout << "Warning: " << val << " not in range (1-8). Skipping..." << endl;
+      }
     }
   } else if(arg=="NUM_PARSE") {
-    NUM_PARSE = stoiWrapper(val);
+    if(stoiWrapper(val)!=-1) {
+      if(stoi(val) < 9 && stoi(val) > 0) {
+        NUM_PARSE = stoiWrapper(val);
+      } else {
+        cout << "Warning: " << val << " not in range (1-8). Skipping..." << endl;
+      }
+    }
   } else if(arg=="SEARCH_FILE") {
     if(!ifstream(val)) {
       cout << "Err: Provided file name '" << val << "' does not exist! Exiting..." << endl;
