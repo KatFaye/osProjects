@@ -1,0 +1,7 @@
+#Not a valid line
+RANDOM=10
+PERIOD_FETCH=180
+NUM_FETCH=a
+NUM_PARSE=1
+SEARCH_FILE=ExampleSearch.txt
+SITE_FILE=ExampleSite.txt

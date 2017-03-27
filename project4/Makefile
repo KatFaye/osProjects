@@ -1,5 +1,5 @@
 CC=g++
-FLAGS= $(eval LIBCURL_LOC = curl-config --libs) -Wall -g
+FLAGS= $(eval LIBCURL_LOC = curl-config --libs) -Wall -g -std=c++11
 # NOTE: Above eval gets needed libraries for libcurl
 
 all: config
