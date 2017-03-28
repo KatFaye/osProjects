@@ -17,6 +17,11 @@ class ConfigProcessor {
     ConfigProcessor();
     int readFile(string f);
     void display(); //display current settings
+    int getPeriod();
+    int getFetch();
+    int getParse();
+    string getSearch();
+    string getSite();
   private:
     int setArg(string arg, string val);
     int stoiWrapper(string val);
@@ -33,12 +38,28 @@ class ConfigProcessor {
     string SEARCH_FILE;
     string SITE_FILE;
 };
+
 ConfigProcessor::ConfigProcessor() {
   PERIOD_FETCH = 180;
   NUM_FETCH = 1;
   NUM_PARSE = 1;
   SEARCH_FILE = "Search.txt";
   SITE_FILE = "Sites.txt";
+}
+int ConfigProcessor::getFetch() {
+  return NUM_FETCH;
+}
+int ConfigProcessor::getPeriod() {
+  return PERIOD_FETCH;
+}
+int ConfigProcessor::getParse() {
+  return NUM_PARSE;
+}
+string ConfigProcessor::getSearch() {
+  return SEARCH_FILE;
+}
+string ConfigProcessor::getSite() {
+  return SITE_FILE;
 }
 void ConfigProcessor::checkDefault() {
   string base = "Warning: Using default paramater for ";

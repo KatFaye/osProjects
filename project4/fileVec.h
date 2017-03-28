@@ -42,7 +42,7 @@ int FileProcessor::readSite(string f) {
         }
     }
   } else {
-    cout << "Err: File '" << f << "' not found!" << endl;
+    cout << "Err: File '" << f << "' not found! Exiting..." << endl;
     return 1;
   }
   return 0;
@@ -56,13 +56,13 @@ int FileProcessor::readSearch(string f) {
   if(inFile) {
     while(getline(inFile, line)) {
         if(line.find(carriage) == string::npos && line.find(comma) == string::npos) {
-          sites.push_back(line);
+          search.push_back(line);
         } else {
           cout << "Err: '" << line << "' not a valid search string! Skipping..." << endl;
         }
     }
   } else {
-    cout << "Err: File '" << f << "' not found!" << endl;
+    cout << "Err: File '" << f << "' not found! Exiting..." << endl;
     return 1;
   }
   return 0;
