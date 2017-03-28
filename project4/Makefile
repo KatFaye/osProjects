@@ -9,19 +9,19 @@ TARGETS= config fileVec urlFetch
 all: $(TARGETS)
 
 %.o: %.c %.h
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) -c $< -o $@ $(FLAGS)
 
 config: config.o
-	$(CC) $(FLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(FLAGS)
 
 fileVec: fileVec.o
-	$(CC) $(FLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(FLAGS)
 
 urlFetch: urlFetch.o
-	$(CC) $(FLAGS) -o $@ $^
+	$(CC) -o $@ $^  $(FLAGS)
 
 site-tester: site-tester.o
-	$(CC) $(FLAGS) -o $@ $^
+	$(CC) -o $@ $^  $(FLAGS)
 
 clean:
 	rm $(TARGETS) *.o

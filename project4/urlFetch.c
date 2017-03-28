@@ -6,6 +6,9 @@
 
 int main(void) {
   URLFetch test;
-  cout << "Test" << endl;
+  test.fetchSite("http://www.nd.edu");
+  cout << test.getData() << endl;
+  test.fetchSite("http://www.cnn.com");
+  //cout << test.getData() << endl;
   return 0;
 }
