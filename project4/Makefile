@@ -3,7 +3,7 @@ CPP=/afs/nd.edu/user14/csesoft/new/bin/g++
 LD=/afs/nd.edu/user14/csesoft/new/bin/g++`
 LDFLAGS= -lcurl -static-libstdc++
 FLAGS= $(LDFLAGS) -Wall -g -std=c++11
-TARGETS= config fileVec urlFetch
+TARGETS= config fileVec urlFetch wordCount
 # NOTE: Above eval gets needed libraries for libcurl
 
 all: $(TARGETS)
@@ -23,5 +23,7 @@ urlFetch: urlFetch.o
 site-tester: site-tester.o
 	$(CC) -o $@ $^  $(FLAGS)
 
+wordCount: wordCount.o
+	$(CC) -o $@ $^ $(FLAGS)
 clean:
 	rm $(TARGETS) *.o
